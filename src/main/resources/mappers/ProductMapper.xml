@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haha.ssmproject.dao.ProductDao">
+
+    <resultMap id="ProductMap" type="com.haha.ssmproject.entity.Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <!--此处指定 java对象的映射字段类型为Date,jdbc字段由框架转换处理，不显式指定-->
+        <result property="createTime" column="create_time" javaType="java.util.Date"/>
+    </resultMap>
+
+
+    <select id="findById" resultMap="ProductMap">
+        select *
+        from product
+        where
+          id = #{id}
+    </select>
+
+
+    <insert id="insert" parameterType="com.haha.ssmproject.entity.Product" useGeneratedKeys="true"
+            keyProperty="id">
+    insert into product (name,type,create_time)
+    values (#{name},#{type}, #{createTime})
+  </insert>
+
+</mapper>

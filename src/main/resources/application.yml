@@ -17,6 +17,10 @@ spring:
     initial-size: 10
     #定义最长等待时间
     maxWait: 60000
+
+
 mybatis:
+  #指定mapper资源文件存放的路径
   mapper-locations: classpath:/mappers/*Mapper.xml
+  #指定dao文件存放的目录
   type-aliases-package: com.haha.ssmproject.*.dao
